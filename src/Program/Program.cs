@@ -7,6 +7,7 @@
 using System;
 using Ucu.Poo.Discord;
 using Ucu.Poo.Cognitive;
+using System.Reflection.Metadata;
 
 namespace Ucu.Poo.RideShare
 {
@@ -40,9 +41,26 @@ namespace Ucu.Poo.RideShare
 
             Console.WriteLine("Conectando con Discord...");
             discord.Login(botToken);
-            discord.SendMessage(channelId, "¡Hola desde C#!");
-            discord.SendImage(channelId, "bill.jpg", "Mira esta imagen");
-            Console.WriteLine("Mensajes enviados.");
+
+
+                        /*
+            En este método deberás mostrar un ejemplo de funcionamiento de tu
+            solución. A continuación te planteamos un ejemplo de como hacerlo.
+            Esto no significa que te limites a hacer solamente esto, ¡debes
+            pensar en grande!
+            */
+           Passenger pasajero1 = new Passenger("Martin", "Perez", 53126432, 8, "src/Program/bill.jpg");
+           //Passenger pasajero2 = new Passenger("Jose", "Pereira", 41298636, 8, "src/Program/rick.jpg");
+
+           Driver conductor1 = new Driver("Roberto", "Diaz", 35412675, 10, "src/Program/dan.jpg", "toyota corolla", "me gusta conducir", false);
+           //Pool conductor2 = new Pool("Manuel", "Gomez", 46712984, 9, "src/Program/rick.jpg", "susuki dzire", "manejo hace 8 años", true, 4);
+
+           UcuRideShare ucuRide = new UcuRideShare(discord);
+           ucuRide.AddPassenger(pasajero1, channelId);
+           //ucuRide.AddPassenger(pasajero2, channelId);
+
+           ucuRide.AddDriver(conductor1, channelId);
+           //ucuRide.AddDriver(conductor2, channelId);
 
             /*
             Mira a continuación cómo validar caras y caras con lentes para el
@@ -50,6 +68,7 @@ namespace Ucu.Poo.RideShare
             de tu solución. Luego puedes comentar o eliminar este código.
             */
 
+/*
             string subscriptionKey = Environment.GetEnvironmentVariable("AZURE_FACE_SUBSCRIPTION_KEY");
             if (string.IsNullOrWhiteSpace(subscriptionKey))
             {
@@ -68,35 +87,7 @@ namespace Ucu.Poo.RideShare
             {
                 Console.WriteLine("Hay una cara con lentes 🤓");
             }
-
-            /*
-            En este método deberás mostrar un ejemplo de funcionamiento de tu
-            solución. A continuación te planteamos un ejemplo de como hacerlo.
-            Esto no significa que te limites a hacer solamente esto, ¡debes
-            pensar en grande!
-
-            User pasajero1 = ...
-            User pasajero2 = ...
-            User pasajero3 = ...
-            User conductor1 = ...
-            User conductorPool1 = ...
-            UcuRideShare rideShare = new UcuRideShare()
-
-            rideShare.Add(conductor1)
-            Se publica en Discord un nuevo conductor!
-
-            rideShare.Add(conductorPool1)
-            Se publica en Discord un nuevo conductor!
-
-            rideShare.Add(pasajero1)
-            Se publica en Discord nuevo registro de pasajero!
-
-            rideShare.Add(pasajero2)
-            Se publica en Discord nuevo registro de pasajero!
-
-            rideShare.Add(pasajero3)
-            Se publica en Discord nuevo registro de pasajero!
-            */
+*/
         }
     }
 }
